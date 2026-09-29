@@ -6,17 +6,26 @@ Personal AI filmmaking workflow system for cinematic MV, commercial film, cinema
 
 ## 当前版本
 
-首批提供三个可独立阅读的 Skill。它们是工作方法与交付规范，不是视频生成软件；仓库本身不会调用模型、生成影片或自动上传素材。
+现已提供十个可独立阅读、按需组合的中文 Skill。它们是工作方法与交付规范，不是视频生成软件；仓库本身不会调用模型、生成影片或自动上传素材。
 
 | Skill | 用途 | 主要交付 |
 | --- | --- | --- |
 | [01 导演总控](skills/01-director-core/SKILL.md) | 从需求到完整创作方向 | 项目简报、叙事节奏、镜头任务、执行顺序 |
+| [02 MV 制作](skills/02-mv-production/SKILL.md) | 音乐与视觉结构设计 | 段落表、表演与意象设计、剪辑落点 |
+| [03 商业广告](skills/03-commercial-film/SKILL.md) | 品牌主张与产品表达 | 广告脚本、产品证明镜头、多版交付方案 |
 | [04 摄影设计](skills/04-cinematography/SKILL.md) | 将情绪转成可见的镜头选择 | 构图、机位、运动、光线、连续性设计 |
 | [05 Seedance 执行](skills/05-seedance/SKILL.md) | 将镜头设计整理成生成输入 | 单镜头提示词、参考素材说明、参数核对与迭代记录 |
+| [06 女性角色](skills/06-female-character/SKILL.md) | 人物设计与跨镜头一致性 | 角色卡、造型状态、表演与参考需求 |
+| [07 素材管理](skills/07-asset-management/SKILL.md) | 素材与镜头版本追踪 | 资产清单、版本关系、缺失项与变更影响 |
+| [08 色彩光线](skills/08-color-lighting/SKILL.md) | 全片色光规则与段落变化 | 色光方案、镜头匹配表、后期交接 |
+| [09 分镜](skills/09-storyboard/SKILL.md) | 将脚本转成可执行镜头 | 计时分镜表、动作与空间衔接、素材需求 |
+| [10 项目总管](skills/10-project-manager/SKILL.md) | 排期、依赖与交付统筹 | 任务表、预算记录、进度与验收清单 |
 
 ## 工作流
 
-需求简报 → 导演方案 → 摄影镜头表 → Seedance 单镜头输入 → 生成结果检查 → 剪辑与交付。
+需求简报 → 导演方案 → MV / 商业广告专项设计（按需）→ 角色与色光规则 → 分镜与摄影设计 → Seedance 单镜头输入 → 生成结果检查 → 剪辑与交付。
+
+素材管理和项目总管贯穿各阶段。可直接使用单个 Skill，不必每次运行十个模块。
 
 镜头统一使用 S001、S002 等编号；修改提示词时保留编号并增加版本。摄影设计和生成执行沿用已确认的角色、服装、场景、运动方向与画幅。
 
@@ -27,8 +36,15 @@ AI-Film-Director-System/
 ├── README.md
 ├── skills/
 │   ├── 01-director-core/SKILL.md
+│   ├── 02-mv-production/SKILL.md
+│   ├── 03-commercial-film/SKILL.md
 │   ├── 04-cinematography/SKILL.md
-│   └── 05-seedance/SKILL.md
+│   ├── 05-seedance/SKILL.md
+│   ├── 06-female-character/SKILL.md
+│   ├── 07-asset-management/SKILL.md
+│   ├── 08-color-lighting/SKILL.md
+│   ├── 09-storyboard/SKILL.md
+│   └── 10-project-manager/SKILL.md
 ├── references/
 │   └── README.md
 └── templates/
@@ -52,17 +68,14 @@ AI-Film-Director-System/
 
 这里只保存 Skill 源文件。上传到 GitHub 不等于在某个 AI 客户端完成安装或启用；具体加载方式取决于使用的客户端。本次未修改本机技能配置。
 
-## 后续规划
+## 按任务选择模块
 
-以下模块尚未实现，不应当作已可调用功能：
+- 制作 MV：01 → 02 → 09 → 04 → 05；需要时加入 06 和 08。
+- 制作商业广告：01 → 03 → 09 → 04 → 05；用 07 追踪产品和商标素材。
+- 解决角色漂移：06 建立角色与造型锚点，07 记录参考版本，05 修订相关镜头输入。
+- 统筹项目：10 管理依赖与交付，07 维护素材；按具体创作任务读取其他模块。
 
-- 02-mv-production：音乐结构、表演与节奏剪辑。
-- 03-commercial-film：品牌诉求、产品镜头与广告交付。
-- 06-female-character：女性角色设计与跨镜头一致性。
-- 07-asset-management：角色、场景、服装与素材版本管理。
-- 08-color-lighting：色彩与光线系统。
-- 09-storyboard：可拍摄、可生成的分镜。
-- 10-project-manager：排期、版本与交付管理。
+编号用于目录排序，不代表必须依次执行。十个模块均已提供初版，实际生成、绘图、音频分析和发布仍取决于所使用环境的工具与授权。
 
 ## 参考资料与项目内容
 
